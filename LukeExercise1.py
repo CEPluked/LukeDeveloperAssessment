@@ -1,39 +1,47 @@
 from os import path
 import pandas as pd
-from numpy import mean, nan
+from numpy import nan
 
-curr_dir = path.abspath(path.dirname(__file__))
-# Use the following two lines to interactively test the script
-# in iPython
-#os.chdir("C:/Users/luked/Documents/Code/pyCEP/DeveloperAssessment")
+# Use the following lines to test the script in iPython
+#import os
+#os.chdir("Documents/Code/DeveloperAssessment")
 #curr_dir = os.getcwd()
 
-ex1_input_dir = path.join(curr_dir, "exercise1", "input")
 
-# Read in the data file
-xl = pd.read_csv(path.join(ex1_input_dir, "xl.csv"))
+def replace_dkna(df, exc_list=[77, 88]):
+    """Takes in a dataframe and replaces the values given in
+    exc_list with NAs. By default exc_list contains 'don't know'
+    responses (coded as 77 and 88).
+    """
+    meaningless_placeholder = -1.0
+    df = df.replace(exc_list, meaningless_placeholder)
+    df = df.replace(meaningless_placeholder, nan)
+    return df
 
-# Replace "77" and "88" entries with NaN
-# Numpy (old version) doesn't support using NaN with ints
-# so evidently we have to do this ridiculous intermediate step.
-# The issue is nan is a float and numpy.putmask
-# (called in pandas.replace) tries to convert it to int.
-meaningless_placeholder = -1.0
-xl = xl.replace([77, 88], meaningless_placeholder)
-xl = xl.replace(meaningless_placeholder, nan)
 
-# Compute the mean response on each question for each client
-question_names = ["fldimp", "undrfld", "advknow", "pubpol",
-                  "comimp", "undrwr", "undrsoc", "orgimp",
-                  "impsust"]
-xl_questions = xl[["fdntext"] + question_names]
-xl_qs_by_fdn = xl_questions.groupby("fdntext")
-xl_q_means = xl_qs_by_fdn.aggregate(mean)
+def main():
+    curr_dir = path.abspath(path.dirname(__file__))
+    ex1_input_dir = path.join(curr_dir, "exercise1", "input")
 
-# Output the file of means
-xl_q_means.to_csv("mean.csv")
+    # Read in the data file
+    xl = pd.read_csv(path.join(ex1_input_dir, "xl.csv"))
 
-# Create a table of summary stats for each question
-xl_summary = xl_q_means.describe()
-# Output a csv with these summary stats
-xl_summary.to_csv("stats.csv")
+    xl = replace_dkna(xl)
+
+    # Compute the mean response on each question for each client
+    question_names = ["fldimp", "undrfld", "advknow", "pubpol",
+                      "comimp", "undrwr", "undrsoc", "orgimp",
+                      "impsust"]
+    xl_questions = xl[["fdntext"] + question_names]
+    xl_q_means = xl_questions.groupby("fdntext").mean()
+
+    # Output the file of means
+    xl_q_means.to_csv("mean.csv")
+
+    # Create a table of summary stats for each question
+    xl_summary = xl_q_means.describe()
+    # Output a csv with these summary stats
+    xl_summary.to_csv("stats.csv")
+
+if __name__ == "__main__":
+    main()
