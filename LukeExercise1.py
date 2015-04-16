@@ -2,11 +2,6 @@ from os import path
 import pandas as pd
 from numpy import nan
 
-# Use the following lines to test the script in iPython
-#import os
-#os.chdir("Documents/Code/DeveloperAssessment")
-#curr_dir = os.getcwd()
-
 
 def replace_dkna(df, exc_list=[77, 88]):
     """Takes in a dataframe and replaces the values given in
