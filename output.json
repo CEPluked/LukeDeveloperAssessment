@@ -2,7 +2,10 @@
     "version": "1.0", 
     "reports": [
         {
+            "name": "Tremont 14S", 
+            "title": "Tremont 14S", 
             "cohorts": [], 
+            "segmentations": [], 
             "elements": {
                 "fldimp": {
                     "cohorts": [], 
@@ -14,7 +17,13 @@
                     "segmentations": [], 
                     "past_results": [], 
                     "type": "percentileChart", 
-                    "absolutes": 28.47182466656151
+                    "absolutes": [
+                        5.0, 
+                        5.7589743589743589, 
+                        5.7894736842105274, 
+                        5.8506493506493502, 
+                        6.0727272727272723
+                    ]
                 }, 
                 "undrfld": {
                     "cohorts": [], 
@@ -26,7 +35,13 @@
                     "segmentations": [], 
                     "past_results": [], 
                     "type": "percentileChart", 
-                    "absolutes": 27.706185292786081
+                    "absolutes": [
+                        4.5686274509803919, 
+                        5.5161290322580649, 
+                        5.6969696969696972, 
+                        5.7392739273927393, 
+                        6.1851851851851851
+                    ]
                 }, 
                 "advknow": {
                     "cohorts": [], 
@@ -38,7 +53,13 @@
                     "segmentations": [], 
                     "past_results": [], 
                     "type": "percentileChart", 
-                    "absolutes": 24.480056409646838
+                    "absolutes": [
+                        3.7272727272727271, 
+                        4.666666666666667, 
+                        5.1640211640211637, 
+                        5.3018867924528301, 
+                        5.6202090592334484
+                    ]
                 }, 
                 "pubpol": {
                     "cohorts": [], 
@@ -50,7 +71,13 @@
                     "segmentations": [], 
                     "past_results": [], 
                     "type": "percentileChart", 
-                    "absolutes": 22.541384351683806
+                    "absolutes": [
+                        3.3947368421052637, 
+                        4.291666666666667, 
+                        4.6827586206896559, 
+                        4.9500000000000002, 
+                        5.2222222222222223
+                    ]
                 }, 
                 "comimp": {
                     "cohorts": [], 
@@ -62,7 +89,13 @@
                     "segmentations": [], 
                     "past_results": [], 
                     "type": "percentileChart", 
-                    "absolutes": 29.008593737868345
+                    "absolutes": [
+                        4.77056277056277, 
+                        5.7307692307692308, 
+                        5.7875647668393775, 
+                        6.2045454545454541, 
+                        6.5151515151515156
+                    ]
                 }, 
                 "undrwr": {
                     "cohorts": [], 
@@ -74,7 +107,13 @@
                     "segmentations": [], 
                     "past_results": [], 
                     "type": "percentileChart", 
-                    "absolutes": 29.228986431748382
+                    "absolutes": [
+                        5.1703056768558948, 
+                        5.6956521739130439, 
+                        5.7823834196891193, 
+                        6.0, 
+                        6.580645161290323
+                    ]
                 }, 
                 "undrsoc": {
                     "cohorts": [], 
@@ -86,7 +125,13 @@
                     "segmentations": [], 
                     "past_results": [], 
                     "type": "percentileChart", 
-                    "absolutes": 28.556907829013092
+                    "absolutes": [
+                        4.9423076923076925, 
+                        5.6842105263157885, 
+                        5.8200000000000003, 
+                        5.9285714285714288, 
+                        6.1818181818181817
+                    ]
                 }, 
                 "orgimp": {
                     "cohorts": [], 
@@ -98,7 +143,13 @@
                     "segmentations": [], 
                     "past_results": [], 
                     "type": "percentileChart", 
-                    "absolutes": 30.256967284521462
+                    "absolutes": [
+                        5.7333333333333325, 
+                        5.9428571428571431, 
+                        6.1315789473684212, 
+                        6.1764705882352944, 
+                        6.2727272727272725
+                    ]
                 }, 
                 "impsust": {
                     "cohorts": [], 
@@ -110,12 +161,15 @@
                     "segmentations": [], 
                     "past_results": [], 
                     "type": "percentileChart", 
-                    "absolutes": 26.663064818798496
+                    "absolutes": [
+                        4.7999999999999998, 
+                        5.192982456140351, 
+                        5.3467336683417086, 
+                        5.4523809523809526, 
+                        5.8709677419354831
+                    ]
                 }
-            }, 
-            "segmentations": [], 
-            "name": "Tremont 14S", 
-            "title": "Tremont 14S"
+            }
         }
     ]
 }

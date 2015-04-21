@@ -1,28 +1,32 @@
 from os import path
 import pandas as pd
+from scipy.stats import percentileofscore
 
-curr_dir = path.abspath(path.dirname(__file__))
-# Use the following two lines to interactively test the script
-# in iPython
-#os.chdir("C:/Users/luked/Documents/Code/pyCEP/DeveloperAssessment")
-#curr_dir = os.getcwd()
 
-ex2_input_dir = path.join(curr_dir, "exercise2", "input")
+def pct_rank(data, score):
+    if pd.isnull(score):
+        return None
+    else:
+        return percentileofscore(data, score, kind="mean")
 
-# Read in the data file
-mean = pd.read_csv(path.join(ex2_input_dir, "mean.csv"))
 
-# This works in the current version of pandas but not the old one
-# we use for CREPE (because rank() didn't have the "pct" arg).
-# pct = mean.drop("fdntext", axis=1).rank(pct=True)
+def main():
+    curr_dir = path.abspath(path.dirname(__file__))
+    ex2_input_dir = path.join(curr_dir, "exercise2", "input")
 
-# This way of calculating works in the old version of pandas
-rank = mean.drop("fdntext", axis=1).rank(ascending=False)
-fdn_count = len(mean["fdntext"])
-pct = 1 - rank / fdn_count
+    # Read in the data file
+    mean = pd.read_csv(path.join(ex2_input_dir, "mean.csv"),
+                       index_col="fdntext")
+    pct = mean.copy()
+    # couldn't figure out if there was a way to do this with apply
+    # as I wasn't sure how you'd pass the specific score to
+    # the percentile function along with the column inside the
+    # apply function call
+    for col in pct.columns:
+        pct[col] = pct[col].apply(lambda x: pct_rank(pct[col], x))
 
-pct.insert(0, "fdntext", mean["fdntext"])
-pct = pct.set_index("fdntext")
+    # Output a csv with these percentiles
+    pct.to_csv("pct.csv")
 
-# Output a csv with these percentiles
-pct.to_csv("pct.csv")
+if __name__ == "__main__":
+    main()
